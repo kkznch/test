@@ -44,7 +44,7 @@ jobs:
       AWS_CODE_DEPLOY_GROUP_NAME: production-group-name
     steps:
       - name: aws-cliをインストールする
-        uses: chrislennon/action-aws-cli@v1.1
+        uses: aws-actions/configure-aws-credentials@v1
       - name: CodeDeployを実行する
         uses: ./.github/steps/run-code-deploy
 

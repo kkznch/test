@@ -1,4 +1,5 @@
 name: Laravelのセットアップ
+description: Laravelをセットアップする
 runs:
   using: composite
   steps:

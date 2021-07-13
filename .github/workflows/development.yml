@@ -1,8 +1,8 @@
-name: Production
+name: Development
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   tests:

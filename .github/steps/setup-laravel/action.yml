@@ -4,11 +4,16 @@ runs:
   steps:
     - name: .envをコピーする
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      shell: bash
     - name: PHPライブラリをインストールする
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      shell: bash
     - name: LaravelのApp keyを作成する
       run: php artisan key:generate
+      shell: bash
     - name: ディレクトリの権限を変更する
       run: chmod -R 777 storage bootstrap/cache
+      shell: bash
     - name: DBをマイグレートする
       run: php artisan migrate
+      shell: bash

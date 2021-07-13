@@ -30,15 +30,17 @@ jobs:
         php-version: 8
     - name: チェックアウトアクションを実行する
       uses: actions/checkout@v2
-    - name: .envをコピーする
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: PHPライブラリをインストールする
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: LaravelのApp keyを作成する
-      run: php artisan key:generate
-    - name: ディレクトリの権限を変更する
-      run: chmod -R 777 storage bootstrap/cache
-    - name: DBをマイグレートする
-      run: php artisan migrate
+    - name: Laravelをセットアップする
+      uses: ./.github/steps/setup-laravel
+    # - name: .envをコピーする
+    #   run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    # - name: PHPライブラリをインストールする
+    #   run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    # - name: LaravelのApp keyを作成する
+    #   run: php artisan key:generate
+    # - name: ディレクトリの権限を変更する
+    #   run: chmod -R 777 storage bootstrap/cache
+    # - name: DBをマイグレートする
+    #   run: php artisan migrate
     - name: テストを実行する
       run: vendor/bin/phpunit

@@ -1,0 +1,14 @@
+name: Laravelのセットアップ
+runs:
+  using: composite
+  steps:
+    - name: .envをコピーする
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: PHPライブラリをインストールする
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: LaravelのApp keyを作成する
+      run: php artisan key:generate
+    - name: ディレクトリの権限を変更する
+      run: chmod -R 777 storage bootstrap/cache
+    - name: DBをマイグレートする
+      run: php artisan migrate

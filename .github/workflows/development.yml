@@ -47,4 +47,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
       - name: CodeDeployを実行する
-        run: aws deploy create-deployment --application-name ${AWS_CODE_DEPLOY_APPLICATION_NAME} --deployment-group-name ${AWS_CODE_DEPLOY_GROUP_NAME} --github-location repository="${{ github.repository }}",commitId="${{ github.sha }}"
+        run: aws deploy create-deployment --application-name ${{ env.AWS_CODE_DEPLOY_APPLICATION_NAME }} --deployment-group-name ${{ env.AWS_CODE_DEPLOY_GROUP_NAME }} --github-location repository="${{ github.repository }}",commitId="${{ github.sha }}"

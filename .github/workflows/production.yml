@@ -44,3 +44,5 @@ jobs:
       run: php artisan migrate
     - name: テストを実行する
       run: vendor/bin/phpunit
+    - name: hoge
+      run: echo hogehoge
